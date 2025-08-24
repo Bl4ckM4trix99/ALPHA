@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://alphanet.lk
+
+# Sitemaps
+Sitemap: https://alphanet.lk/sitemap.xml

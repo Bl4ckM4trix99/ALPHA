@@ -1,0 +1,38 @@
+<svg width="100%" height="480" viewBox="0 0 960 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="480" fill="#fff"/>
+  <!-- Ground -->
+  <rect x="0" y="400" width="960" height="80" fill="#222" />
+  <!-- Trees -->
+  <g>
+    <polygon points="60,400 80,340 100,400" fill="#111" />
+    <polygon points="80,400 100,360 120,400" fill="#222" />
+    <polygon points="120,400 140,350 160,400" fill="#333" />
+    <polygon points="200,400 220,360 240,400" fill="#222" />
+    <polygon points="240,400 260,340 280,400" fill="#111" />
+    <polygon points="900,400 920,350 940,400" fill="#333" />
+    <polygon points="860,400 880,360 900,400" fill="#222" />
+    <polygon points="820,400 840,340 860,400" fill="#111" />
+  </g>
+  <!-- Animals -->
+  <g>
+    <!-- Deer -->
+    <ellipse cx="180" cy="420" rx="18" ry="10" fill="#444" />
+    <rect x="170" y="410" width="20" height="8" fill="#222" />
+    <rect x="175" y="405" width="10" height="8" fill="#333" />
+    <!-- Rabbit -->
+    <ellipse cx="220" cy="430" rx="8" ry="5" fill="#222" />
+    <rect x="215" y="425" width="6" height="5" fill="#444" />
+    <!-- Bear -->
+    <ellipse cx="880" cy="420" rx="16" ry="12" fill="#222" />
+    <rect x="872" y="410" width="16" height="10" fill="#333" />
+  </g>
+  <!-- Birds -->
+  <g>
+    <path d="M300,100 Q305,95 310,100 Q315,105 320,100" stroke="#222" stroke-width="2" fill="none" />
+    <path d="M350,80 Q355,75 360,80 Q365,85 370,80" stroke="#333" stroke-width="2" fill="none" />
+    <path d="M400,120 Q405,115 410,120 Q415,125 420,120" stroke="#444" stroke-width="2" fill="none" />
+    <path d="M600,90 Q605,85 610,90 Q615,95 620,90" stroke="#222" stroke-width="2" fill="none" />
+    <path d="M650,110 Q655,105 660,110 Q665,115 670,110" stroke="#333" stroke-width="2" fill="none" />
+    <path d="M700,70 Q705,65 710,70 Q715,75 720,70" stroke="#444" stroke-width="2" fill="none" />
+  </g>
+</svg>

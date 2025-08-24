@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #111;
+    --foreground: #fff;
+    --card: #181818;
+    --card-foreground: #fff;
+    --popover: #181818;
+    --popover-foreground: #fff;
+    --primary: #fff;
+    --primary-foreground: #111;
+    --secondary: #fff;
+    --secondary-foreground: #111;
+    --muted: #222;
+    --muted-foreground: #bbb;
+    --accent: #fff;
+    --accent-foreground: #111;
+    --destructive: #fff;
+    --destructive-foreground: #111;
+    --border: #222;
+    --input: #222;
+    --ring: #fff;
+    --radius: 1rem;
+    --chart-1: #fff;
+    --chart-2: #111;
+    --chart-3: #fff;
+    --chart-4: #181818;
+    --chart-5: #111;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom CTF Theme Styles */
+
+
+.matrix-bg {
+  background: linear-gradient(135deg, #181818 0%, #111 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #fff 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #fff 0%, transparent 50%);
+  opacity: 0.04;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.1; }
+}
+
+
+
+.glow-effect {
+  box-shadow: 0 4px 24px 0 rgba(255,255,255,0.08), 0 1.5px 4px 0 rgba(0,0,0,0.12);
+  transition: all 0.3s cubic-bezier(.4,2,.3,1);
+}
+
+.glow-effect:hover {
+  box-shadow: 0 8px 32px 0 rgba(255,255,255,0.18), 0 2px 8px 0 rgba(0,0,0,0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+
+
+
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+
+
+.text-glow {
+  text-shadow: 0 2px 16px rgba(255,255,255,0.18), 0 1px 8px rgba(0,0,0,0.12);
+}
+
+
+
+.neon-border {
+  border: 1px solid #222;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(45deg, #fff, #111) border-box;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0;  /* Removes bottom scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.2);  /* Orange theme */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.3);
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar-horizontal {
+  display: none;
+}
