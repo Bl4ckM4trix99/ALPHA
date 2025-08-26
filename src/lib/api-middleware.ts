@@ -29,7 +29,7 @@ export function withSecurity(handler: ApiHandler) {
         const csrfToken = req.cookies['csrf-token']
         const headerToken = req.headers['x-csrf-token']
 
-        if (!validateCsrfToken(csrfToken, headerToken as string)) {
+        if (!csrfToken || !headerToken || !validateCsrfToken(csrfToken, headerToken.toString())) {
           return res.status(403).json({ error: 'Invalid CSRF token' })
         }
       }

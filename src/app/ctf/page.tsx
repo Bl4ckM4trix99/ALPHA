@@ -312,9 +312,9 @@ export default function CtfPage() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
-                  { rank: '1st', name: 'CyberNinja', points: '15,420', icon: Trophy },
-                  { rank: '2nd', name: 'ByteMaster', points: '14,850', icon: Star },
-                  { rank: '3rd', name: 'SecurityPro', points: '14,320', icon: Target }
+                  { rank: '1st', name: '#alpha', points: '00000', icon: Trophy },
+                  { rank: '2nd', name: '#alpha', points: '00000', icon: Star },
+                  { rank: '3rd', name: '#alpha', points: '00000', icon: Target }
                 ].map((player, index) => (
                   <motion.div
                     key={index}

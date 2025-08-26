@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Target, Users, Award, Zap, Brain, Globe, ChevronRight, Lock, Code, Check, Terminal } from 'lucide-react';
+import { Target, Users, Award, Zap, Brain, Globe, ChevronRight, Lock, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Share_Tech_Mono, Orbitron } from 'next/font/google';

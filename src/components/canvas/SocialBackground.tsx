@@ -53,6 +53,7 @@ const SocialBackground = () => {
         this.targetY += (Math.random() - 0.5) * 0.5;
 
         // Keep within bounds
+        if (!canvas) return;
         if (this.targetX < 0 || this.targetX > canvas.width) this.targetX = canvas.width / 2;
         if (this.targetY < 0 || this.targetY > canvas.height) this.targetY = canvas.height / 2;
       }

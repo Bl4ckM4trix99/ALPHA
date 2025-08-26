@@ -7,7 +7,6 @@ import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { TbTarget, TbCertificate, TbBrain, TbRocket, TbWorld, TbShield, TbLock, TbBug, TbCode, TbShieldLock, TbPassword } from 'react-icons/tb';
 import { FaGithub, FaFacebook, FaYoutube, FaWhatsapp, FaLinkedin, FaEnvelope, FaTwitter, FaDiscord } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
 import CapabilitiesBackground from '@/components/canvas/CapabilitiesBackground';
 import CardBackground from '@/components/canvas/CardBackground';
 import ManagementBackground from '@/components/canvas/ManagementBackground';

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Share_Tech_Mono, Orbitron } from 'next/font/google';
-import { Heart, Clock, Share2, Eye, User, Users, AlertTriangle, Target, Shield, Brain, Zap, Calendar, Terminal } from 'lucide-react';
+import { Heart, Clock, Share2, Eye, User, Users, AlertTriangle, Target, Shield, Brain, Zap, Calendar } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -72,6 +72,7 @@ interface BlogPost {
 }
 
 const blogPosts: BlogPost[] = [
+ 
   {
     id: 2,
     title: 'Welcome To ALPHA::CTF!',
@@ -176,8 +177,113 @@ At its core lies Ironshade (Kareem Volkov), a former military engineer turned ph
     },
     tags: ['Operation Black Echo', 'Cybersecurity', 'CTF', 'Advanced']
   },
+   {
+    id: 3,
+    title: 'robots.txt: The Most Overlooked Treasure Map',
+    excerpt: '🧠 Where Hackers Are Forged — The ultimate cyber battleground where knowledge meets precision.',
+    date: '2025-08-07',
+    readTime: '5 min read',
+    author: 'Admin',
+    views: 3789,
+    likes: 0,
+    teams: 158,
+    image: '/robaa.webp',
+    content: {
+      vision: '"To build a generation of ethical hackers and cybersecurity defenders who can secure the digital frontier through skill, creativity, and relentless curiosity."',
+      mainContent: `Welcome to AlphaCTF – the ultimate cyber battleground where knowledge meets precision, and curiosity fuels conquest. Built for aspiring cyber warriors, ethical hackers, and problem-solvers, AlphaCTF is not just a platform — it's a movement.
+
+What we offer:
+
+[Web Exploitation]
+[Binary & Reverse Engineering]
+[Network Forensics]
+[Cryptography]
+[OSINT & Recon]
+[Smart Contract & Blockchain Security]
+[SCADA & ICS Simulations]
+
+Our Philosophy:
+At AlphaCTF, we believe cybersecurity education should be immersive, accessible, and challenging. We cultivate an elite community by blending gamification, real-world attack simulation, and deep technical learning.
+
+Why AlphaCTF?
+• Challenge-Based Learning — hands-on puzzles, not theory dumps.
+• Story-Driven Scenarios — every challenge is part of a larger narrative.
+• Team & Solo Modes — train alone or with your crew.
+• Ranking & Achievements — climb the leaderboard.
+• Regular Live Events — time-limited missions and tournaments.
+
+[HINT_START]
+Sometimes the most overlooked files can hide the biggest secrets.
+Try checking the robots.txt file on your site.
+[HINT_END]
+
+A short note about robots.txt:
+The robots.txt file is a publicly accessible text file placed at the root of a website (e.g. https://yoursite.com/robots.txt). Its purpose is to tell search engine crawlers (like Google, Bing, etc.) which parts of the site should or should not be indexed.
+
+It usually contains rules like:
+
+User-agent: *
+Disallow: /admin
+
+This doesn't secure the pages — it only gives guidance to crawlers. Since the file is open to everyone, attackers, bug bounty hunters, and CTF players often check it for hidden directories, endpoints, or even secret hints.
+
+That's why in many CTF challenges, robots.txt can be the first breadcrumb toward uncovering something valuable.
+
+Join the Operation:
+Whether you're a student, professional, or cyber enthusiast — AlphaCTF is your proving ground. Enter the matrix, break the silence, and forge your path in the digital shadows.
+
+Are you ready to become the next Echo Breaker?`,
+    },
+    tags: ['Ethical Hacking', 'Cybersecurity', 'Alpha', 'CTF']
+  },
 
 ];
+
+const formatBlogContent = (content: string) => {
+  const parts = content.split('\n\n');
+  return parts.map((part, index) => {
+    if (part.startsWith('[HINT_START]') && part.endsWith('[HINT_END]')) {
+      const hintContent = part.replace('[HINT_START]', '').replace('[HINT_END]', '').trim();
+      return (
+        <div key={index} className="my-4 p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg space-y-3">
+          <h4 className="text-xl text-orange-400 flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5" /> Hint
+          </h4>
+          <p className="text-orange-300">{hintContent}</p>
+        </div>
+      );
+    }
+    
+    if (part.startsWith('[') && part.endsWith(']')) {
+      const item = part.slice(1, -1);
+      return (
+        <div key={index} className="flex items-center gap-3 bg-orange-500/5 p-3 rounded-lg my-2">
+          <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+          <span className="text-orange-300">{item}</span>
+        </div>
+      );
+    }
+
+    if (part.includes('User-agent:')) {
+      return (
+        <div key={index} className="my-4 bg-orange-500/5 p-4 rounded-lg font-mono text-orange-300">
+          {part}
+        </div>
+      );
+    }
+
+    if (part.startsWith('•')) {
+      return (
+        <div key={index} className="flex items-center gap-3 bg-orange-500/5 p-3 rounded-lg my-2">
+          <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+          <span className="text-gray-300">{part.substring(2)}</span>
+        </div>
+      );
+    }
+
+    return <p key={index} className="text-gray-300 my-4">{part}</p>;
+  });
+};
 
 export default function BlogPage() {
   const [likedPosts, setLikedPosts] = useState<number[]>([]);
@@ -251,9 +357,6 @@ export default function BlogPage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
-                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center border border-orange-500/30 backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
-                      <Terminal className="w-5 h-5 text-orange-400 group-hover:text-orange-300 transition-colors duration-300" />
-                    </div>
                     {post.pinned && (
                       <div className="absolute top-4 right-4 px-2 py-1 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-sm">
                         <span className={`text-xs text-orange-400 ${techMono.className}`}>PINNED</span>
@@ -387,7 +490,7 @@ export default function BlogPage() {
                           <p className="text-gray-300">{post.content.background}</p>
                         </>
                       )}
-                      <p className="text-gray-300 whitespace-pre-wrap">{post.content.mainContent}</p>
+                      <div className="text-gray-300">{formatBlogContent(post.content.mainContent)}</div>
                     </div>
 
                     {/* Welcome Post Specific Content */}

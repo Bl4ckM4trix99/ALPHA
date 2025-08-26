@@ -54,7 +54,17 @@ export const getSecureHeaders = () => ({
 })
 
 // Create secure cookie
-export const createSecureCookie = (name: string, value: string, options: any = {}) => {
+interface CookieOptions {
+  httpOnly?: boolean;
+  secure?: boolean;
+  sameSite?: 'strict' | 'lax' | 'none';
+  path?: string;
+  maxAge?: number;
+  domain?: string;
+  expires?: Date;
+}
+
+export const createSecureCookie = (name: string, value: string, options: CookieOptions = {}) => {
   return serialize(name, value, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -72,7 +82,7 @@ export const checkRateLimit = (ip: string, limit: number = 100, window: number =
   const userRequests = rateLimit.get(ip) || []
   
   // Remove old requests
-  const recentRequests = userRequests.filter(time => time > now - window)
+  const recentRequests = userRequests.filter((time: number) => time > now - window)
   
   if (recentRequests.length >= limit) {
     return false

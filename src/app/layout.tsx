@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { NavigationProvider } from "@/context/navigation";
 import { LoadingBar } from "@/components/LoadingBar";
+import { Suspense } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,7 +22,6 @@ export const metadata: Metadata = {
   description: "Master cybersecurity with cutting-edge threat intelligence, competitive CTF challenges, and comprehensive hands-on learning experiences designed by industry experts.",
   keywords: ["cybersecurity", "CTF", "capture the flag", "security training", "ethical hacking"],
   authors: [{ name: "ALPHA NET Team" }],
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -43,14 +43,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col bg-black text-gray-100`}
       >
-        <NavigationProvider>
-          <LoadingBar />
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </NavigationProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <NavigationProvider>
+            <LoadingBar />
+            <Navbar />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </NavigationProvider>
+        </Suspense>
       </body>
     </html>
   );

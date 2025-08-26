@@ -100,13 +100,9 @@ const HeroBackground = () => {
     window.addEventListener('resize', resizeCanvas);
 
     // Matrix rain effect
-    let fontSize = 14;
-    let columns = canvas.width / fontSize;
-    let drops: number[] = [];
-
-    for (let i = 0; i < columns; i++) {
-      drops[i] = 1;
-    }
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops: number[] = Array(Math.floor(columns)).fill(1);
 
     const drawMatrix = () => {
       ctx.fillStyle = 'rgba(11, 17, 32, 0.05)';
@@ -125,7 +121,7 @@ const HeroBackground = () => {
       }
     };
 
-    let matrixInterval = setInterval(drawMatrix, 60);
+    const matrixInterval = setInterval(drawMatrix, 60);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
