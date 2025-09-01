@@ -7,3 +7,7 @@ Host: https://alphanet.lk
 
 # Sitemaps
 Sitemap: https://alphanet.lk/sitemap.xml
+
+
+# Custom AlphaCTF Token
+QUxQSEF7c3QzNGx0aF9Nb2QzXzRDdGl2NHQzZH0=
